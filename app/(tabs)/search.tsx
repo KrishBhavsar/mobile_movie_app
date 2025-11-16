@@ -2,7 +2,9 @@ import MovieDisplayCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { Movie } from "@/interfaces/interfaces";
 import { fetchMovies } from "@/services/api";
+import { updateSearchCount } from "@/services/appwrite";
 import useFetch from "@/services/useFetch";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
@@ -27,6 +29,11 @@ const Search = () => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await loadMovies();
+
+        // Call updateSearchCount only if there are results
+        if (movies?.length! > 0 && movies?.[0]) {
+          await updateSearchCount(searchQuery, movies[0]);
+        }
       } else {
         reset();
       }
@@ -34,6 +41,14 @@ const Search = () => {
 
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
+
+  // // Separate effect to update search count after movies are loaded
+  // useEffect(() => {
+  //   console.log("use effect call thiyu");
+  //   if (searchQuery.trim() && movies && movies.length > 0 && !loading) {
+  //     updateSearchCount(searchQuery, movies[0]);
+  //   }
+  // }, [movies, searchQuery, loading]);
 
   return (
     <View className="flex-1 bg-primary">

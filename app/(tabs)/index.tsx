@@ -16,6 +16,7 @@ import {
 import "../globals.css";
 
 export default function Index() {
+  // console.log("inside index.ts")
   const router = useRouter();
   const {
     data: movies,
