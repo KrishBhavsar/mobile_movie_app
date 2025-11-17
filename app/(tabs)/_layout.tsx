@@ -9,7 +9,7 @@ const TabIcon = ({ focused, icon, title }: any) => {
     return (
       <ImageBackground
         source={images.highlight}
-        className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
+        className="flex flex-row w-full flex-1 min-w-[120px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
       >
         <Image source={icon} className="size-5" tintColor="#151312" />
         <Text className="text-secondary text-base font-semibold ml-2">
@@ -21,9 +21,6 @@ const TabIcon = ({ focused, icon, title }: any) => {
   return (
     <View className="size-full justify-center items-center mt-4 rounded-full">
       <Image source={icon} className="size-5" tintColor="#A8B5DB" />
-      {/* <Text className="text-secondary text-base font-semibold ml-2">
-        {title}
-      </Text> */}
     </View>
   );
 };
@@ -42,11 +39,11 @@ const _layout = () => {
         tabBarStyle: {
           backgroundColor: "#0F0D23",
           borderRadius: 50,
-          marginHorizontal: 20,
+          marginHorizontal: 60,
           marginBottom: 36,
           height: 52,
           position: "absolute",
-          overflow: "hidden",
+          // overflow: "hidden",
           borderWidth: 1,
           borderColor: "#0F0D23",
         },
@@ -69,26 +66,6 @@ const _layout = () => {
           title: "Search",
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.search} title="Search" />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="saved"
-        options={{
-          headerShown: false,
-          title: "Saved",
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.save} title="Saved" />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          headerShown: false,
-          title: "Profile",
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.person} title="Profile " />
           ),
         }}
       />

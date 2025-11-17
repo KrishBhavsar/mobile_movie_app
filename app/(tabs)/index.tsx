@@ -18,7 +18,6 @@ import {
 import "../globals.css";
 
 export default function Index() {
-  // console.log("inside index.ts")
   const router = useRouter();
   const {
     data: trendingMovies,
@@ -68,7 +67,7 @@ export default function Index() {
                     gap: 26,
                   }}
                   renderItem={({ item, index }) => (
-                    <TrendingCard movie={item} index={index} /> 
+                    <TrendingCard movie={item} index={index} />
                   )}
                   keyExtractor={(item) => item.movie_id.toString()}
                   ItemSeparatorComponent={() => <View className="w-4" />}
@@ -91,6 +90,7 @@ export default function Index() {
                   paddingRight: 5,
                   marginBottom: 10,
                 }}
+                scrollEnabled={false}
               />
             </>
           </View>
